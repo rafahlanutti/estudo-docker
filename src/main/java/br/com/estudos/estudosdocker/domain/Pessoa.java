@@ -1,21 +1,25 @@
 package br.com.estudos.estudosdocker.domain;
 
-import java.time.LocalDate;
-
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.LocalDate;
+
 @Document
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Pessoa {
 
-	@Id
-	private final String id;
-	private final String nome;
-	private final String sobrenome;
-	private final String sexo;
-	private final String cpf;
-	private final LocalDate nascimento;
-	private final Endereco endereco;
+    @Id
+    private String id;
+    private String nome;
+    private String sobrenome;
+    private String sexo;
+    private String cpf;
+    private LocalDate nascimento;
+    private Endereco endereco;
 }

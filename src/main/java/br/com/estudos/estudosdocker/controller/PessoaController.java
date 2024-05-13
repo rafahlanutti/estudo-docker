@@ -16,12 +16,12 @@ public class PessoaController {
 	private final PessoaService service;
 
 	@Autowired
-	public PessoaController(PessoaService service) {
+	public PessoaController(final PessoaService service) {
 		this.service = service;
 	}
 
 	@PostMapping("/users")
-	ResponseEntity<PessoaResponse> salvarPessoa(@Valid @RequestBody PessoaRequest pessoa) {
+	ResponseEntity<PessoaResponse> salvarPessoa(@Valid @RequestBody final PessoaRequest pessoa) {
 		return ResponseEntity.ok(service.save(pessoa));
 	}
 }

@@ -11,7 +11,7 @@ public class ApiErrors {
 
 	private List<String> errors = new ArrayList<>();
 
-	public ApiErrors(List<ObjectError> allErrors) {
+	public ApiErrors(final List<ObjectError> allErrors) {
 		allErrors.forEach(error -> this.errors.add(error.getDefaultMessage()));
 	}
 }

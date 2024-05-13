@@ -4,8 +4,11 @@ import br.com.estudos.estudosdocker.domain.Pessoa;
 import br.com.estudos.estudosdocker.dto.PessoaRequest;
 import br.com.estudos.estudosdocker.dto.PessoaResponse;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
 import org.mapstruct.ReportingPolicy;
+
+import java.util.UUID;
 
 @Mapper(
 	componentModel = MappingConstants.ComponentModel.SPRING,
@@ -13,7 +16,14 @@ import org.mapstruct.ReportingPolicy;
 )
 public interface PessoaMapper {
 
-	Pessoa toPessoa(PessoaRequest pessoaRequest);
 
-	PessoaResponse toPessoaResponse(Pessoa pessoaRequest);
+	@Mapping(target = "id",
+			expression = "java(generateId())")
+	Pessoa toPessoa(final PessoaRequest pessoaRequest);
+
+	PessoaResponse toPessoaResponse(final Pessoa pessoaRequest);
+
+	default String generateId() {
+		return UUID.randomUUID().toString();
+	}
 }

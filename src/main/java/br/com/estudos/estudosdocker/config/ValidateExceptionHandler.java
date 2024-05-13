@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class ValidateExceptionHandler {
 
 	@ExceptionHandler(MethodArgumentNotValidException.class)
-	public ResponseEntity<ApiErrors> handleValidationExceptions(MethodArgumentNotValidException ex,
-		HttpServletRequest request) {
-		BindingResult bindingResult = ex.getBindingResult();
+	public ResponseEntity<ApiErrors> handleValidationExceptions(final MethodArgumentNotValidException ex,
+		final HttpServletRequest request) {
+		final BindingResult bindingResult = ex.getBindingResult();
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ApiErrors(bindingResult.getAllErrors()));
 	}
 }

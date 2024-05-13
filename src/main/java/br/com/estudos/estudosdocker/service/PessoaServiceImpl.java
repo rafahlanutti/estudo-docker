@@ -13,15 +13,14 @@ public class PessoaServiceImpl implements PessoaService {
 	private final PessoaMapper pessoaMapper;
 	private final PessoaRepository repository;
 
-	public PessoaServiceImpl(PessoaMapper pessoaMapper, PessoaRepository repository) {
+	public PessoaServiceImpl(final PessoaMapper pessoaMapper, final PessoaRepository repository) {
 		this.pessoaMapper = pessoaMapper;
 		this.repository = repository;
 	}
 
 	@Override
-	public PessoaResponse save(PessoaRequest pessoa) {
+	public PessoaResponse save(final PessoaRequest pessoa) {
 		final Pessoa saved = pessoaMapper.toPessoa(pessoa);
-
 		repository.save(saved);
 		return pessoaMapper.toPessoaResponse(saved);
 	}
