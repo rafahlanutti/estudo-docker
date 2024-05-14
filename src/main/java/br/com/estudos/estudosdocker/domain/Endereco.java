@@ -1,10 +1,11 @@
 package br.com.estudos.estudosdocker.domain;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-@Getter
+@Data
 public class Endereco {
 	private final String rua;
 	private final String bairro;

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class ValidateExceptionHandler {
 
+	//TODO: Adicionar mais exception handlers
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public ResponseEntity<ApiErrors> handleValidationExceptions(final MethodArgumentNotValidException ex,
 		final HttpServletRequest request) {
