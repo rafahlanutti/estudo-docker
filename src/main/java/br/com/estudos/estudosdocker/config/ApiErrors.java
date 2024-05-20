@@ -9,9 +9,13 @@ import org.springframework.validation.ObjectError;
 @Getter
 public class ApiErrors {
 
-	private List<String> errors = new ArrayList<>();
+	private final List<String> errors = new ArrayList<>();
 
 	public ApiErrors(final List<ObjectError> allErrors) {
 		allErrors.forEach(error -> this.errors.add(error.getDefaultMessage()));
+	}
+
+	public ApiErrors(final String error) {
+		this.errors.add(error);
 	}
 }
