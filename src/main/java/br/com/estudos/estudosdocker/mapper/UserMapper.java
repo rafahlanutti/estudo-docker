@@ -11,7 +11,7 @@ import org.mapstruct.ReportingPolicy;
         componentModel = MappingConstants.ComponentModel.SPRING,
         unmappedTargetPolicy = ReportingPolicy.IGNORE
 )
-public interface UserMaper {
+public interface UserMapper {
 
     UserInfo map(UserRequest user);
 

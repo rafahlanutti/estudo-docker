@@ -3,7 +3,7 @@ package br.com.estudos.estudosdocker.service;
 import br.com.estudos.estudosdocker.domain.UserInfo;
 import br.com.estudos.estudosdocker.dto.UserRequest;
 import br.com.estudos.estudosdocker.dto.UserResponse;
-import br.com.estudos.estudosdocker.mapper.UserMaper;
+import br.com.estudos.estudosdocker.mapper.UserMapper;
 import br.com.estudos.estudosdocker.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -18,7 +18,7 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
-    private final UserMaper modelMapper;
+    private final UserMapper modelMapper;
 
     @Override
     public UserResponse saveUser(final UserRequest userRequest) {

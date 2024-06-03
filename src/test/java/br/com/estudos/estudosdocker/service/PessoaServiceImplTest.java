@@ -1,3 +1,5 @@
+package br.com.estudos.estudosdocker.service;
+
 import br.com.estudos.estudosdocker.config.PessoaNotFindException;
 import br.com.estudos.estudosdocker.domain.Endereco;
 import br.com.estudos.estudosdocker.domain.Pessoa;
@@ -5,7 +7,6 @@ import br.com.estudos.estudosdocker.dto.PessoaRequest;
 import br.com.estudos.estudosdocker.dto.PessoaResponse;
 import br.com.estudos.estudosdocker.mapper.PessoaMapper;
 import br.com.estudos.estudosdocker.repository.PessoaRepository;
-import br.com.estudos.estudosdocker.service.PessoaServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

@@ -3,6 +3,7 @@ package br.com.estudos.estudosdocker.controller;
 import br.com.estudos.estudosdocker.domain.Endereco;
 import br.com.estudos.estudosdocker.dto.PessoaRequest;
 import br.com.estudos.estudosdocker.dto.PessoaResponse;
+import br.com.estudos.estudosdocker.filter.JwtAuthFilter;
 import br.com.estudos.estudosdocker.service.PessoaService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
@@ -12,6 +13,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.data.domain.PageImpl;
@@ -29,12 +31,15 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
 @WebMvcTest(PessoaController.class)
+@AutoConfigureMockMvc(addFilters = false)
 class PessoaControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
     @MockBean
     private PessoaService pessoaService;
+    @MockBean
+    private JwtAuthFilter jwtAuthFilter;
     private static ObjectMapper mapper;
     private static ObjectWriter ow;
 

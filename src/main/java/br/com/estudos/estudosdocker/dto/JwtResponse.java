@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class AuthRequestDTO {
+public class JwtResponse {
 
-    private String username;
-    private String password;
+    private String accessToken;
+    private String token;
 }

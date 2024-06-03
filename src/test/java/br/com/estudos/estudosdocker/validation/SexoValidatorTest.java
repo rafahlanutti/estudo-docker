@@ -1,5 +1,5 @@
-import br.com.estudos.estudosdocker.validation.SexoValidation;
-import br.com.estudos.estudosdocker.validation.SexoValidator;
+package br.com.estudos.estudosdocker.validation;
+
 import org.apache.logging.log4j.util.Strings;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class SexoValidatorTest {
+class SexoValidatorTest {
 
     @Mock
     private SexoValidation sexoValidation;
@@ -30,31 +30,31 @@ public class SexoValidatorTest {
     private static final String FEMININO = "F";
 
     @BeforeEach
-    public void setup() {
+    void setup() {
         when(sexoValidation.feminino()).thenReturn(FEMININO);
         when(sexoValidation.masculino()).thenReturn(MASCULINO);
         sexoValidator.initialize(sexoValidation); // Inicializar manualmente o validador
     }
 
     @Test
-    public void testIsValidFeminino() {
+    void testIsValidFeminino() {
         assertTrue(sexoValidator.isValid(FEMININO, constraintValidatorContext));
     }
 
     @Test
-    public void testIsValidMasculino() {
+    void testIsValidMasculino() {
         assertTrue(sexoValidator.isValid(MASCULINO, constraintValidatorContext));
     }
 
     @Test
-    public void testIsValidNullOrEmpty() {
+    void testIsValidNullOrEmpty() {
         assertFalse(sexoValidator.isValid(null, constraintValidatorContext));
         assertFalse(sexoValidator.isValid("", constraintValidatorContext));
         assertFalse(sexoValidator.isValid(Strings.EMPTY, constraintValidatorContext));
     }
 
     @Test
-    public void testIsValidOtherValues() {
+    void testIsValidOtherValues() {
         assertFalse(sexoValidator.isValid("X", constraintValidatorContext));
         assertFalse(sexoValidator.isValid("Masculino", constraintValidatorContext));
         assertFalse(sexoValidator.isValid("Feminino", constraintValidatorContext));
