@@ -22,7 +22,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(final String username) throws UsernameNotFoundException {
         logger.debug("Buscando por usuario.");
         final var user = userRepository.findByUsername(username);
-        if(user == null){
+        if (user == null) {
             logger.error("Usuario não encontrado: " + username);
             throw new UsernameNotFoundException("Usuario não encontrado");
         }

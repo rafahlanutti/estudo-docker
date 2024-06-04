@@ -21,10 +21,10 @@ public class CustomUserDetails extends UserInfo implements UserDetails {
 
     public CustomUserDetails(final UserInfo byUsername) {
         this.username = byUsername.getUsername();
-        this.password= byUsername.getPassword();
+        this.password = byUsername.getPassword();
         final var auths = new ArrayList<GrantedAuthority>();
 
-        for(final UserRole role : byUsername.getRoles()){
+        for (final UserRole role : byUsername.getRoles()) {
 
             auths.add(new SimpleGrantedAuthority(role.getName().toUpperCase()));
         }

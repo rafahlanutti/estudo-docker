@@ -1,5 +1,6 @@
 package br.com.estudos.estudosdocker.service;
 
+import br.com.estudos.estudosdocker.config.UsuarioDuplicadoException;
 import br.com.estudos.estudosdocker.domain.UserInfo;
 import br.com.estudos.estudosdocker.dto.UserRequest;
 import br.com.estudos.estudosdocker.dto.UserResponse;
@@ -28,11 +29,10 @@ public class UserServiceImpl implements UserService {
 
         final var user = modelMapper.map(userRequest);
         user.setPassword(encodedPassword);
-        if(userRequest.getId() != null){
+        if (userRequest.getId() != null) {
             UserInfo oldUser = userRepository.findFirstById(userRequest.getId());
-            if(oldUser != null){
-                throw new RuntimeException("Usuario já cadastrado.");
-                //TODO: Criar exception personalizada
+            if (oldUser != null) {
+                throw new UsuarioDuplicadoException("Usuario já cadastrado.");
             }
         }
         return modelMapper.map(userRepository.save(user));

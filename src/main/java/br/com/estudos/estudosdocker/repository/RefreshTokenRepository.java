@@ -10,5 +10,5 @@ import java.util.Optional;
 @Repository
 public interface RefreshTokenRepository extends MongoRepository<RefreshToken, Integer> {
 
-    Optional<RefreshToken> findByToken(String token);
+    Optional<RefreshToken> findByToken(final String token);
 }

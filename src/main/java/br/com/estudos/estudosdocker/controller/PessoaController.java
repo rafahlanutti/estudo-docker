@@ -16,35 +16,35 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class PessoaController {
 
-	private final PessoaService service;
+    private final PessoaService service;
 
-	@PostMapping
-	ResponseEntity<PessoaResponse> salvarPessoa(@Valid @RequestBody final PessoaRequest pessoa) {
-		return ResponseEntity.ok(service.save(pessoa));
-	}
+    @PostMapping
+    ResponseEntity<PessoaResponse> salvarPessoa(@Valid @RequestBody final PessoaRequest pessoa) {
+        return ResponseEntity.ok(service.save(pessoa));
+    }
 
-	@GetMapping("/{id}")
-	public ResponseEntity<PessoaResponse> get(@PathVariable final String id) {
-		return ResponseEntity.ok(service.getById(id));
-	}
+    @GetMapping("/{id}")
+    public ResponseEntity<PessoaResponse> get(@PathVariable final String id) {
+        return ResponseEntity.ok(service.getById(id));
+    }
 
-	@DeleteMapping("/{id}")
-	public ResponseEntity<Void> delete(@PathVariable final String id) {
-		service.delete(id);
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable final String id) {
+        service.delete(id);
 
-		return ResponseEntity.noContent().build();
-	}
+        return ResponseEntity.noContent().build();
+    }
 
-	@PutMapping("/{id}")
-	public ResponseEntity<PessoaResponse> update(@PathVariable final String id, @Valid @RequestBody final PessoaRequest dto) {
-		return ResponseEntity.ok(service.update(id, dto));
+    @PutMapping("/{id}")
+    public ResponseEntity<PessoaResponse> update(@PathVariable final String id, @Valid @RequestBody final PessoaRequest dto) {
+        return ResponseEntity.ok(service.update(id, dto));
 
-	}
+    }
 
-	@GetMapping
-	public Page<PessoaResponse> find(final String nome, final Pageable pageRequest) {
-		Page<PessoaResponse> result = service.find(nome, pageRequest);
-		return new PageImpl<>(result.getContent(), pageRequest, result.getTotalElements());
-	}
+    @GetMapping
+    public Page<PessoaResponse> find(final String nome, final Pageable pageRequest) {
+        Page<PessoaResponse> result = service.find(nome, pageRequest);
+        return new PageImpl<>(result.getContent(), pageRequest, result.getTotalElements());
+    }
 
 }

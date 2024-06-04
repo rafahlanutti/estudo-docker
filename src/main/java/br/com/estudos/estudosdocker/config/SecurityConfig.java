@@ -26,7 +26,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @RequiredArgsConstructor
 public class SecurityConfig {
 
-    public static final String[] CAMINHOS_PERMITIDOS = {"/api/v1/save", "/api/v1/login", "/api/v1/refreshToken"};
+    public static final String[] CAMINHOS_PERMITIDOS = {"/api/v1/login", "/api/v1/refreshToken"};
     private final JwtAuthFilter jwtAuthFilter;
     private final UserRepository userRepository;
 

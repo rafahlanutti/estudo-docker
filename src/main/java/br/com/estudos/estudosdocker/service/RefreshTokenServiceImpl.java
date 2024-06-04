@@ -18,7 +18,7 @@ public class RefreshTokenServiceImpl implements RefreshTokenService {
     private final UserRepository userRepository;
 
     @Override
-    public RefreshToken createRefreshToken(final String username){
+    public RefreshToken createRefreshToken(final String username) {
         final var refreshToken = RefreshToken.builder()
                 .id(UUID.randomUUID().toString())
                 .userInfo(userRepository.findByUsername(username))
@@ -29,13 +29,13 @@ public class RefreshTokenServiceImpl implements RefreshTokenService {
     }
 
     @Override
-    public Optional<RefreshToken> findByToken(final String token){
+    public Optional<RefreshToken> findByToken(final String token) {
         return refreshTokenRepository.findByToken(token);
     }
 
     @Override
-    public RefreshToken verifyExpiration(final RefreshToken token){
-        if(token.getExpiryDate().compareTo(Instant.now())<0){
+    public RefreshToken verifyExpiration(final RefreshToken token) {
+        if (token.getExpiryDate().compareTo(Instant.now()) < 0) {
             refreshTokenRepository.delete(token);
             throw new RuntimeException(token.getToken() + " O token expirou. Por favor, faça um novo login.");
         }
